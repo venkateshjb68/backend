@@ -6,9 +6,11 @@ const {v4: uuidv4} = require( "uuid");
 const httpServer=createServer();
 const io = new Server(httpServer,{
     cors:{
-        origin:"http://localhost:3000",
+        origin:process.env.link,
         methods:["GET","POST"],
         "type": "module",
+        
+
         
     },
 });
