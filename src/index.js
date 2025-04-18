@@ -1,17 +1,19 @@
 const {createServer} = require( "http");
 const {Server} = require( "socket.io");
+const express=require('express');
+const app=express();
+const cors=require('cors');
 const {v4: uuidv4} = require( "uuid");
 //const cors=require('cors')
 
-const httpServer=createServer();
+const httpServer=createServer(app);
+app.use(cors({origin:'*',allowedHeaders:'*',methods:'*'}))
 const io = new Server(httpServer,{
     cors:{
         origin:process.env.link,
         methods:["GET","POST"],
         "type": "module",
-        
 
-        
     },
 });
 
@@ -69,7 +71,7 @@ console.log("listening to port...");
 
 // httpServer.listen(process.env.PORT || 4000);
 
-const PORT = process.env.PORT || 4000;
+const PORT =4000;
 httpServer.listen(PORT, () => {
     console.log(`Socket.IO server listening on port ${PORT}`);
 });
