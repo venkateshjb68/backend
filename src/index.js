@@ -10,7 +10,7 @@ const httpServer=createServer(app);
 app.use(cors({origin:'*',allowedHeaders:'*',methods:'*'}))
 const io = new Server(httpServer,{
     cors:{
-        origin:process.env.link,
+        origin:"*",
         methods:["GET","POST"],
         "type": "module",
 
